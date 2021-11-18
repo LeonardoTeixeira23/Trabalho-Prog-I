@@ -1,3 +1,4 @@
+package codes;
 import java.util.Scanner;
 
 public class top3Exer7 {
