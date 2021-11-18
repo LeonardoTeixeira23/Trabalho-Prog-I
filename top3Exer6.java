@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class top3Exer6 {
+   
     public static void main(String[] args) {
         Scanner kboard= new Scanner (System.in);
  
