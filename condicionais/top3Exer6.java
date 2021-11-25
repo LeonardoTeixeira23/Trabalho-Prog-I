@@ -1,4 +1,4 @@
-package codes;
+package condicionais;
 import java.util.Scanner;
 
 public class top3Exer6 {
