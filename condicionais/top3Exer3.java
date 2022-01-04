@@ -1,4 +1,3 @@
-package condicionais;
 import java.util.Scanner;
 
 public class top3Exer3 {
@@ -24,5 +23,6 @@ public class top3Exer3 {
                 }
             }
         }
+        kboard.close();
     }
 }

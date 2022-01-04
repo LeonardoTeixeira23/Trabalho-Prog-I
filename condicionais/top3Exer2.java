@@ -1,4 +1,3 @@
-package condicionais;
 import java.util.Scanner;
 
 public class top3Exer2 {
@@ -15,5 +14,6 @@ public class top3Exer2 {
         } else {
             System.out.println(valor+ " par");
         }
+        kboard.close();
     }
 }
