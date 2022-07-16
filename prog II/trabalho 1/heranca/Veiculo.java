@@ -1,5 +1,11 @@
 package heranca;
+
+import java.util.Scanner;
+
+
 public class Veiculo {
+    Scanner kboard = new Scanner(System.in);
+
     private String fabricante;
     private String modelo;
     private String pais;
@@ -7,6 +13,11 @@ public class Veiculo {
     private float posicaoY;
     private float valor;
     private int passageiros;
+
+    public void cadastro() {
+        System.out.print("Insira o nome da fabricante: ");
+        setFabricante(kboard.nextLine());
+    }
     
     public String getFabricante() {
         return fabricante;
