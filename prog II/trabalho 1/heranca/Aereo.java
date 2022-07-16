@@ -1,4 +1,39 @@
 package heranca;
-public class Aereo {
-    
+
+import java.lang.invoke.VarHandle;
+
+public class Aereo extends Veiculo{
+    private String codigo;
+    private float posicaoZ;
+    private String empresa;
+
+
+    public String getCodigo() {
+        return codigo;
+    }
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    public float getPosicaoZ() {
+        return posicaoZ;
+    }
+    public void setPosicaoZ(float posicaoZ) {
+        this.posicaoZ = posicaoZ;
+    }
+    public String getEmpresa() {
+        return empresa;
+    }
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public void deslocamento(float posicaoX, float posicaoY, float posicaoZ){
+        this.deslocamento(posicaoX, posicaoY);
+        double deslocamentoZ = this.posicaoZ - posicaoZ;
+        System.out.println("O deslocamento Z foi de " + deslocamentoZ + "graus");
+    }
+
+    public void compra(String comprador) {
+        setEmpresa(comprador);
+    }
 }
