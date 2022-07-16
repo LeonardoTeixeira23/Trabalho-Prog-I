@@ -1,4 +1,6 @@
 package heranca;
-public class aviao {
+public class aviao extends Aereo{
     
+
+
 }

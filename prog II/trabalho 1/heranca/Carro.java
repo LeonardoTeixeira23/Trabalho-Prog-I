@@ -3,6 +3,7 @@ public class Carro extends Terrestre{
     private String combustivel;
     private String classe;
     private int potencia;
+    private String gnv = "Não";
     
     public String getCombustivel() {
         return combustivel;
@@ -23,5 +24,7 @@ public class Carro extends Terrestre{
         this.potencia = potencia;
     }
 
-    
+    public void intalarGNV() {
+        this.gnv = "Sim";
+    }
 }
