@@ -9,7 +9,7 @@ public class Caminhao extends Terrestre{
     public void setEixos(int eixos) {
         this.eixos = eixos;
     }
-    public int getPeso() {
+    public float getPeso() {
         return peso;
     }
     public void setPeso(float peso) {
