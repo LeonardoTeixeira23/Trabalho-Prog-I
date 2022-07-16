@@ -4,6 +4,8 @@ public class Carro extends Terrestre{
     private String classe;
     private int potencia;
     private String gnv = "Não";
+
+    
     
     public String getCombustivel() {
         return combustivel;
