@@ -52,9 +52,21 @@ public class Veiculo {
     }
 
     public void deslocamento(float posicaoX, float posicaoY) {
-        double deslocamentoX = this.posicaoX - posicaoX;
-        double deslocamentoY = this.posicaoY - posicaoY;
+        float deslocamentoX = this.posicaoX - posicaoX;
+        float deslocamentoY = this.posicaoY - posicaoY;
+        setPosicaoX(posicaoX);
+        setPosicaoY(posicaoY);
         System.out.println("O deslocamento X foi de " + deslocamentoX + "graus\n" + 
                             "O deslocamento Y foi de " + deslocamentoY + "graus");
+    }
+
+    public void info(){
+        System.out.println("Fabricante: " + getFabricante() + "\n" +
+                            "Modelo: " + getModelo() + "\n" +
+                            "País: " + getPais() + "\n" +
+                            "Posição X: " + getPosicaoX() + "\n" +
+                            "posição Y: " + getPosicaoY() + "\n" +
+                            "Valor: " + getValor() + "\n" +
+                            "Numero de passageiros: " + getPassageiros() + "\n");
     }
 }

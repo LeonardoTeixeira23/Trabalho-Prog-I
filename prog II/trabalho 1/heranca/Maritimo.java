@@ -21,4 +21,10 @@ public class Maritimo extends Veiculo{
     public void compre(String comprador){
         setEmpresa(comprador);
     }
+
+    public void info(){
+        super.info();
+        System.out.println("Codigo" + getCodigo() + "\n" + 
+                            "Empresa: " + getEmpresa() + "\n");
+    }
 }

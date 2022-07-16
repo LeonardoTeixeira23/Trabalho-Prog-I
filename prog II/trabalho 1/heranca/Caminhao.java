@@ -23,4 +23,10 @@ public class Caminhao extends Terrestre{
     public void descarga(float carga){
         this.peso -= carga;
     }
+
+    public void info() {
+        super.info();
+        System.out.println("Eixos: " + getEixos() + "\n" +
+                            "Peso total do veiculo: " + getPeso() + "t\n");
+    }
 }

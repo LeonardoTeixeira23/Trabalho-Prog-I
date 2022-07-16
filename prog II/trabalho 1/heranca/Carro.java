@@ -27,4 +27,11 @@ public class Carro extends Terrestre{
     public void intalarGNV() {
         this.gnv = "Sim";
     }
+
+    public void info() {
+        super.info();
+        System.out.println("Combustivel: " + getCombustivel() + "\n" + 
+                            "Classe: " + getClasse() + "\n" +
+                            "Potêcia: " + getPotencia() + "cv\n");
+    }
 }

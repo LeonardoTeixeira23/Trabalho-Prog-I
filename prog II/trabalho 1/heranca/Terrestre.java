@@ -23,4 +23,10 @@ public class Terrestre extends Veiculo {
     public void compra(String novoDono){
         this.dono = novoDono;
     }
+
+    public void info(){
+        super.info();
+        System.out.println("Placa: " + getPlaca() + "\n" +
+                            "Dono: " + getDono() + "\n");
+    }
 }

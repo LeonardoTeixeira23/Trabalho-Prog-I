@@ -24,4 +24,10 @@ public class aviao extends Aereo{
         setPiloto(novoPiloto);
     }
 
+    public void info(){
+        super.info();
+        System.out.println("Numero de motores: " + getMotores() + "\n" +
+                            "Nome do piloto" + getPiloto() + "\n");
+
+    }
 }
