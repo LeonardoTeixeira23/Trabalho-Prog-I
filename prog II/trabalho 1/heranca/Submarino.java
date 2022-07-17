@@ -29,20 +29,25 @@ public class Submarino extends Maritimo{
         this.profundidadeMax = profundidadeMax;
     }
 
-    public void testaPofundidade() {
-        
+    public void testaPofundidade(float pfMax, float posZ) {
+        if(pfMax < posZ){
+            System.out.print("\n=================================" +
+                            "\nProfundidade acima do permitido"  +
+                            "\n==================================" );
+        }
     }
 
     public void deslocamento(float posicaoX, float posicaoY, float posicaoZ){
         this.deslocamento(posicaoX, posicaoY);
         float deslocamentoZ = this.posicaoZ - posicaoZ;
-        setPosicaoZ(posicaoZ);
         System.out.println("O deslocamento Z foi de " + deslocamentoZ + "graus");
+        testaPofundidade(getProfundidadeMax(), posicaoZ);
+        setPosicaoZ(posicaoZ);
     }
 
     public void info(){
         super.info();
         System.out.println("Posição Z: " + getPosicaoZ() + " graus\n" +
-                            "Profundidade maxima: " + getProfundidadeMax() + "m\n");
+                            "Profundidade maxima: " + getProfundidadeMax() + "\n");
     }
 }
