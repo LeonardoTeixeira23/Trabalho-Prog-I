@@ -3,6 +3,15 @@ package heranca;
 public class Submarino extends Maritimo{
     private float posicaoZ;
     private float profundidadeMax;
+
+    public void cadastro (){
+        super.cadastro();
+
+        System.out.print("\nInsira profundidade maxima que o submarino pode atingir no eixo Z: ");
+        setProfundidadeMax(kboard.nextFloat());
+        System.out.print("\nInsira a posição Z do submarino: ");
+        setPosicaoZ(kboard.nextFloat());
+    }
     
     public float getPosicaoZ() {
         return posicaoZ;
@@ -18,6 +27,10 @@ public class Submarino extends Maritimo{
     
     public void setProfundidadeMax(float profundidadeMax) {
         this.profundidadeMax = profundidadeMax;
+    }
+
+    public void testaPofundidade() {
+        
     }
 
     public void deslocamento(float posicaoX, float posicaoY, float posicaoZ){

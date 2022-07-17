@@ -15,8 +15,20 @@ public class Veiculo {
     private int passageiros;
 
     public void cadastro() {
-        System.out.print("Insira o nome da fabricante: ");
+        System.out.print("\nInsira o nome da fabricante: ");
         setFabricante(kboard.nextLine());
+        System.out.print("\nInsira o modelo: ");
+        setModelo(kboard.nextLine());
+        System.out.print("\nInsira o pais de origem: ");
+        setPais(kboard.nextLine());
+        System.out.print("\nInsira a posição X: ");
+        setPosicaoX(kboard.nextFloat());
+        System.out.print("\nInsira a posição Y: ");
+        setPosicaoY(kboard.nextFloat());
+        System.out.print("\nInsira o valor do veiculo: ");
+        setValor(kboard.nextFloat());
+        System.out.print("\nInsira o numero maximo de passageiros: ");
+        setPassageiros(kboard.nextInt());
     }
     
     public String getFabricante() {

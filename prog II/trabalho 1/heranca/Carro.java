@@ -5,7 +5,16 @@ public class Carro extends Terrestre{
     private int potencia;
     private String gnv = "Não";
 
-    
+    public void cadastro(){
+        super.cadastro();
+
+        System.out.print("\nInsira o tipo de combustivel: ");
+        setCombustivel(kboard.nextLine());
+        System.out.print("\nInsira o tipo a classe do veiculo: ");
+        setClasse(kboard.nextLine());
+        System.out.println("\nInsira a potencia do carro: ");
+        setPotencia(kboard.nextInt());
+    }
     
     public String getCombustivel() {
         return combustivel;

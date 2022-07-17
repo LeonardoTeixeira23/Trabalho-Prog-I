@@ -5,6 +5,18 @@ public class Aereo extends Veiculo{
     private float posicaoZ;
     private String empresa;
 
+    public void cadastro(){
+        super.cadastro();
+
+        System.out.print("\nInsira o codigo da aeronave: ");
+        setCodigo(kboard.next());
+        System.out.print("\nInsira a posição Z: ");
+        setPosicaoZ(kboard.nextFloat());
+        System.out.print("\nInsira a empresa proprietaria da aeronave: ");
+        kboard.nextLine();
+        setEmpresa(kboard.nextLine());
+    }
+
 
     public String getCodigo() {
         return codigo;

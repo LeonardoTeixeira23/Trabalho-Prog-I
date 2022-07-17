@@ -3,6 +3,15 @@ public class Caminhao extends Terrestre{
     private int eixos;
     private float peso;
     
+    public void cadastro(){
+        super.cadastro();
+
+        System.out.print("\nInsira a quantidade de eixos do veiculo: ");
+        setEixos(kboard.nextInt());
+        System.out.print("\nInsira o peso do veiculo em toneladas: ");
+        setPeso(kboard.nextFloat());
+    }
+
     public int getEixos() {
         return eixos;
     }

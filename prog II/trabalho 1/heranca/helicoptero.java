@@ -4,6 +4,16 @@ public class helicoptero extends Aereo {
     
     private int rotores;
     private String piloto;
+
+    public void cadastro(){
+        super.cadastro();
+
+        System.out.print("\nInsira o numero de rotores do helicoptero: ");
+        setRotores(kboard.nextInt());
+        System.out.print("\nInsira o nome do piloto: ");
+        kboard.nextLine();
+        setPiloto(kboard.nextLine());
+    }
     
     public int getRotores() {
         return rotores;

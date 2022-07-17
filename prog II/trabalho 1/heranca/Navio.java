@@ -4,6 +4,16 @@ public class Navio extends Maritimo {
     private String nome;
     private String capiao;
     
+    public void cadastro(){
+        super.cadastro();
+
+        System.out.print("\nInsira o nome do navio: ");
+        kboard.nextLine();
+        setNome(kboard.nextLine());
+        System.out.print("\nInsira o nome do capitão: ");
+        setCapiao(kboard.nextLine());
+    }
+
     public String getCapiao() {
         return capiao;
     }

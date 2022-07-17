@@ -2,6 +2,16 @@ package heranca;
 public class Terrestre extends Veiculo {
     private String placa;
     private String dono;
+
+    public void cadastro(){
+        super.cadastro();
+
+        System.out.print("\nInsira a placa: ");
+        setPlaca(kboard.next());
+        System.out.print("\nInsira o nome do dono: ");
+        kboard.nextLine();
+        setDono(kboard.nextLine());
+    }
     
     public String getPlaca() {
         return placa;
