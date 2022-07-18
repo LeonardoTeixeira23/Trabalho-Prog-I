@@ -8,13 +8,13 @@ public class Main {
     static Scanner kboard = new Scanner(System.in);
     static List<List<Veiculo>> veiculos = new ArrayList<>();
     public static void main(String[] args) {
-
+        
         //Carro 1
-        veiculos.add(new ArrayList<Veiculo>());
+        veiculos.add(new ArrayList<>());
         //Moto 2
-        veiculos.add(new ArrayList<Veiculo>());
+        veiculos.add(new ArrayList<>());
         //Caminhão 3
-        veiculos.add(new ArrayList<Veiculo>());
+        veiculos.add(new ArrayList<>());
         //Avião 4
         veiculos.add(new ArrayList<>());
         //Helicoptero 5
@@ -110,10 +110,10 @@ public class Main {
         switch (key) {
             case 1:
 
-                for(Carro i : veiculos.get(0)){
+                // for(Carro i : veiculos.get(0)){
 
                     
-                }
+                // }
                 break;
 
             case 2:
