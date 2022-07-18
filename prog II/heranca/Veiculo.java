@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Veiculo {
     Scanner kboard = new Scanner(System.in);
 
+    
+
     private String fabricante;
     private String modelo;
     private String pais;

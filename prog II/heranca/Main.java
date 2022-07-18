@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         
         //Carro 1
-        veiculos.add(new ArrayList<>());
+        veiculos.add(new ArrayList<Carro>());
         //Moto 2
         veiculos.add(new ArrayList<>());
         //Caminhão 3
@@ -24,16 +24,26 @@ public class Main {
         //Submarino 7
         veiculos.add(new ArrayList<>());
 
+        menu();
 
     }
 
-    public void menu(){
+    public static void menu(){
 
         while(true){
            System.out.println("[1] Cadastrar um veiculo" +
                               "[2] Exibir os veiculos" +
                               "[3] ");
+            int key = kboard.nextInt();
+            switch (key) {
+                case 1:
+                    cadastro();
+                    break;
             
+                case 2:
+                    exibir();
+                    break;
+            }            
         }
     }
 
@@ -110,17 +120,12 @@ public class Main {
         switch (key) {
             case 1:
 
-                // for(Carro i : veiculos.get(0)){
-
-                    
-                // }
-                break;
+                // for(Veicul11
 
             case 2:
-                Moto m = new Moto();
-                m.cadastro();
-                veiculos.get(1).add(m);
-
+                // for(Moto i : veiculos.get(1)){
+                //     i.info();
+                // }
                 break;
             case 3:
                 Caminhao cm = new Caminhao();
