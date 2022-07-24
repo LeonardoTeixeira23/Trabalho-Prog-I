@@ -55,5 +55,64 @@ public class Arvore{
             }else busca(valor, noAux.proxDirt);
         }
     }
+
+    public void remover(int valor, No no){
+        if(valor == no.valor){
+            if(no.anterior == null){
+                this.raiz = null;
+            }else if(no.proxEsqd == null && no.proxDirt == null){
+                if(no.anterior.valor > valor){
+                    no.anterior.proxEsqd = null;
+                }else no.anterior.proxDirt = null;
+
+            }else if(no.proxEsqd != null && no.proxDirt == null){
+                if(no.anterior.valor > valor){
+                    no.anterior.proxEsqd = no.proxEsqd;
+                }else no.anterior.proxDirt = no.proxEsqd;
+
+            }else if(no.proxEsqd == null && no.proxDirt != null){
+                if(no.anterior.valor > valor){
+                    no.anterior.proxEsqd = no.proxDirt;
+                }else no.anterior.proxDirt = no.proxDirt;                
+           
+            }else{
+                No noAux = no;
+                while(noAux.proxDirt != null){
+                    noAux = noAux.proxDirt;
+                }
+                noAux.anterior = no.anterior;
+                noAux.proxEsqd = no.proxEsqd;
+                noAux.proxDirt = no.proxDirt;
+            }
+        }else if(no.valor > valor){
+            remover(valor, no.proxEsqd);
+        }else if(no.valor < valor){
+            remover(valor, no.proxDirt);
+        }
+    }
     
+    public String exibirArvore(int nivel, No no){
+        String str = toString(no) + "\n";
+
+        for(int i = 0; i < nivel; i++){
+            str += "\t";
+        }
+        if(no.proxDirt != null){
+            str += "DIRT: " + exibirArvore(nivel +1,no.proxDirt);
+        }else str += "DIRT: Null";
+        str += "\n";
+
+        for(int i = 0; i < nivel; i++){
+            str += "\t";
+        }
+        if(no.proxEsqd != null){
+            str += "ESQD: " + exibirArvore(nivel +1,no.proxEsqd);
+        }else str += "ESQD: Null";
+        str += "\n";
+
+        return str;
+    }
+    public String toString(No no){
+        return "["+no.valor+"] ("+no.bal+")";
+    }
 }

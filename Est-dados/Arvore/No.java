@@ -1,5 +1,6 @@
 public class No{
     int valor;
+    int bal;
     int tamEsqd;
     int tamDrit;
     No anterior;
