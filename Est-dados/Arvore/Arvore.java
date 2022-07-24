@@ -15,7 +15,8 @@ public class Arvore{
         }else{
           testeLados(no, raiz);
         }
-        // calculaBalanciamento(raiz);
+        calculaBalanciamento(raiz);
+        verificaBalanciamento(raiz);
     }
     
     public void testeLados(No no, No noAux){
@@ -118,6 +119,43 @@ public class Arvore{
         if(no.proxDirt != null) calculaBalanciamento(no.proxDirt);
     }
 
+    public void verificaBalanciamento(No no){
+        if(no.bal >= 2 || no.bal <= -2){
+            if(no.bal >= 2){
+                if(no.bal * no.proxDirt.bal > 0){
+                    trocaSimpleDirt(no);
+                }//else //trocaDuplaDirt();
+            }
+            
+            // if(no.bal <= 2){
+            //     if(no.bal * no.proxDirt.bal < 0){
+            //         // trocaSimpleEsqd();
+            //     }//else //trocaDuplaEsqd();
+            // }
+            calculaBalanciamento(raiz);
+            if(no.proxEsqd != null) verificaBalanciamento(no.proxEsqd);
+            if(no.proxDirt != null) verificaBalanciamento(no.proxDirt);
+        }
+
+    }
+
+    public void trocaSimpleDirt(No no){
+        No proxDirt = no.proxDirt;
+        No filhoDoFilho;
+
+        if(proxDirt.proxEsqd != null){
+            filhoDoFilho = no.proxEsqd;
+            
+            no.proxDirt = filhoDoFilho;
+            filhoDoFilho.anterior = no;
+        }
+        proxDirt.proxEsqd = no;
+        proxDirt.anterior = no.anterior;
+        
+        no.proxDirt = null;
+        no.anterior = proxDirt;
+    }
+
     public String exibirArvore(int nivel, No no){
         String str = toString(no) + "\n";
       
@@ -125,16 +163,16 @@ public class Arvore{
             str += "\t";
         }
         if(no.proxEsqd != null){
-            str += "Esqd: " + exibirArvore(nivel +1,no.proxEsqd);
-        }else str += "Esqd: Null";
+            str += "+--Esqd: " + exibirArvore(nivel +1,no.proxEsqd);
+        }else str += "+--Esqd: Null";
         str += "\n";
         
         for(int i = 0; i < nivel; i++){
             str += "\t";
         }
         if(no.proxDirt != null){
-            str += "Dirt: " + exibirArvore(nivel +1,no.proxDirt);
-        }else str += "Dirt: Null";
+            str += "+--Dirt: " + exibirArvore(nivel +1,no.proxDirt);
+        }else str += "+--Dirt: Null";
         str += "\n";
 
         return str;
