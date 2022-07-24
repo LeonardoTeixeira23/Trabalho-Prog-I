@@ -1,30 +1,52 @@
-public class Main
-{
+import java.util.Scanner;
+
+public class Main{
 	public static void main(String[] args) {
 		Arvore ar = new Arvore();
-		
-		ar.inserir(8);
-		ar.inserir(6);
-		ar.inserir(4);
-		ar.inserir(2);
-		ar.inserir(5);
-		
-		ar.inserir(3);
+		Scanner kboard = new Scanner(System.in);
+		int key;
 
- 		//ar.inserir(4);
- 		//ar.inserir(25);
- 		// ar.inserir(12);
- 		// ar.inserir(6);
- 		// ar.inserir(7);
- 		
+		while(true){
+			System.out.print("\n[1] Inserir valor"   + 
+							 "\n[2] Buscar valor"    +
+							 "\n[3] Remover valor"   +
+							 "\n[4] Exirbir arvore " +
+							 "\n[5] Exibir in-ordem" +
+							 "\n[0] Sair"            +
+							 "\nEscolha uma opção: ");
+			key = kboard.nextInt();
+			switch (key) {
+				case 1:
+					System.out.print("Insira um valor: ");
+					ar.inserir(kboard.nextInt());
+					
+					
+					ar.calculaBalanciamento(ar.raiz);
+					ar.verificaBalanciamento(ar.raiz);
+					break;
+			
+				case 2:
+					System.out.print("Insira um valor: ");
+					ar.busca(kboard.nextInt(), ar.raiz);
+					break;
 
- 		// ar.exibir(ar.raiz);
-
-		// ar.busca(6, ar.raiz);
-
-		// ar.remover(3, ar.raiz);
-
-		// ar.calculaBalanciamento(ar.raiz);
-		System.out.println(ar.exibirArvore(0,ar.raiz));
+				case 3:
+					System.out.print("Insira um valor: ");
+					ar.remover(kboard.nextInt(), ar.raiz);
+					break;
+				
+				case 4:
+					System.out.println(ar.exibirArvore(0, ar.raiz));
+				break;
+				
+				case 5:
+					ar.exibir(ar.raiz);
+					break;
+				
+				case 0:
+					
+					break;
+			}
+		}
 	}
 }
