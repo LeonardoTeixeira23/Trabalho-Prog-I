@@ -15,7 +15,7 @@ public class Arvore{
         }else{
           testeLados(no, raiz);
         }
-            
+        // calculaBalanciamento(raiz);
     }
     
     public void testeLados(No no, No noAux){
@@ -91,23 +91,50 @@ public class Arvore{
         }
     }
     
+    public int calculaAltura(No no){
+        if(no.proxEsqd == null && no.proxDirt == null){
+            return 1;
+        }else if (no.proxEsqd != null && no.proxDirt == null){
+            return 1 + calculaAltura(no.proxEsqd);
+        }else if (no.proxEsqd == null && no.proxDirt != null){
+            return 1 + calculaAltura(no.proxDirt);
+        }else{ 
+            return 1 + Math.max(calculaAltura(no.proxEsqd), calculaAltura(no.proxDirt));
+        }
+    }
+
+    public void calculaBalanciamento(No no){
+
+        if(no.proxEsqd == null && no.proxDirt == null){
+            no.bal = 0;
+        }else if(no.proxEsqd != null && no.proxDirt == null){
+            no.bal = 0 - calculaAltura(no.proxEsqd);
+        }else if(no.proxEsqd == null && no.proxDirt != null){
+            no.bal = calculaAltura(no.proxDirt) - 0;
+
+        }else no.bal = calculaAltura(no.proxDirt) - calculaAltura(no.proxEsqd);
+        
+        if(no.proxEsqd != null) calculaBalanciamento(no.proxEsqd);
+        if(no.proxDirt != null) calculaBalanciamento(no.proxDirt);
+    }
+
     public String exibirArvore(int nivel, No no){
         String str = toString(no) + "\n";
-
-        for(int i = 0; i < nivel; i++){
-            str += "\t";
-        }
-        if(no.proxDirt != null){
-            str += "DIRT: " + exibirArvore(nivel +1,no.proxDirt);
-        }else str += "DIRT: Null";
-        str += "\n";
-
+      
         for(int i = 0; i < nivel; i++){
             str += "\t";
         }
         if(no.proxEsqd != null){
-            str += "ESQD: " + exibirArvore(nivel +1,no.proxEsqd);
-        }else str += "ESQD: Null";
+            str += "Esqd: " + exibirArvore(nivel +1,no.proxEsqd);
+        }else str += "Esqd: Null";
+        str += "\n";
+        
+        for(int i = 0; i < nivel; i++){
+            str += "\t";
+        }
+        if(no.proxDirt != null){
+            str += "Dirt: " + exibirArvore(nivel +1,no.proxDirt);
+        }else str += "Dirt: Null";
         str += "\n";
 
         return str;
