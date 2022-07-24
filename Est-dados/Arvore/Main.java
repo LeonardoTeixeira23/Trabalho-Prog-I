@@ -3,12 +3,16 @@ public class Main
 	public static void main(String[] args) {
 		Arvore ar = new Arvore();
 		
-		ar.inserir(10);
+		ar.inserir(8);
+		ar.inserir(6);
+		ar.inserir(4);
+		ar.inserir(2);
 		ar.inserir(5);
- 		ar.inserir(15);
- 		ar.inserir(12);
- 		ar.inserir(20);
- 		ar.inserir(25);
+		
+		ar.inserir(3);
+
+ 		//ar.inserir(4);
+ 		//ar.inserir(25);
  		// ar.inserir(12);
  		// ar.inserir(6);
  		// ar.inserir(7);
