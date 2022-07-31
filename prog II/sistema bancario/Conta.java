@@ -7,12 +7,18 @@ abstract class Conta {
     protected double saldo;
     protected String string;
 
-    public Titular getPessoa() {
-        return pessoa;
+
+
+
+    /*
+     * GETTER's E SETTER'S
+     * */
+    public Pessoa getPessoa() {
+        return titular;
     }
 
-    public void setPessoa(Titular pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoa(Pessoa pessoa) {
+        this.titular = pessoa;
     }
 
     public Banco getBanco() {
