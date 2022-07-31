@@ -13,12 +13,13 @@ abstract class Conta {
     /*
      * GETTER's E SETTER'S
      * */
-    public Pessoa getPessoa() {
+
+    public Pessoa getTitular() {
         return titular;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.titular = pessoa;
+    public void setTitular(Pessoa titular) {
+        this.titular = titular;
     }
 
     public Banco getBanco() {
