@@ -1,5 +1,7 @@
-public abstract class ContaBancaria {
-    protected Titular pessoa;
+package sistemaBancario;
+
+abstract class Conta {
+    protected Pessoa titular;
     protected Banco banco;
     protected int nroConta;
     protected double saldo;
