@@ -11,12 +11,9 @@ public class Arvore{
 
         if(raiz == null){
             this.raiz = no;
-            System.out.println(no);
         }else{
           testeLados(no, raiz);
         }
-        calculaBalanciamento(raiz);
-        verificaBalanciamento(raiz);
     }
     
     public void testeLados(No no, No noAux){
@@ -85,11 +82,12 @@ public class Arvore{
                 noAux.proxEsqd = no.proxEsqd;
                 noAux.proxDirt = no.proxDirt;
             }
+            System.out.println("Valor removido");
         }else if(no.valor > valor){
             remover(valor, no.proxEsqd);
         }else if(no.valor < valor){
             remover(valor, no.proxDirt);
-        }
+        }else System.out.println("Valor não encontrado");
     }
     
     public int calculaAltura(No no){
@@ -125,18 +123,15 @@ public class Arvore{
                 if(no.bal * no.proxDirt.bal > 0){
                     trocaSimpleDirt(no);
                 }else trocaDuplaDirt(no);
-            }
-            
-            if(no.bal <= -2){
-                if(no.bal * no.proxEsqd.bal < 0){
+            }else{
+                if(no.bal * no.proxEsqd.bal > 0){
                    trocaSimpleEsqd(no);
                 }else trocaDuplaEsqd(no);
             }
-            calculaBalanciamento(raiz);
-            if(no.proxEsqd != null) verificaBalanciamento(no.proxEsqd);
-            if(no.proxDirt != null) verificaBalanciamento(no.proxDirt);
         }
-
+        calculaBalanciamento(raiz);
+        if(no.proxEsqd != null) verificaBalanciamento(no.proxEsqd);
+        if(no.proxDirt != null) verificaBalanciamento(no.proxDirt);
     }
 
     public void trocaSimpleDirt(No no){
@@ -174,14 +169,24 @@ public class Arvore{
         No filhoDoFilho = proxDirt.proxEsqd;
         No noInserido = filhoDoFilho.proxDirt;
 
-        //Alinha nos
-        no.proxDirt = filhoDoFilho;
-        filhoDoFilho.anterior = no;
-        filhoDoFilho.proxDirt = proxDirt;
-        proxDirt.proxEsqd = noInserido;
-        noInserido.anterior = proxDirt;
-        proxDirt.anterior = filhoDoFilho;
+        //Alinha nos11
 
+        if(no.proxEsqd == null){
+            no.proxDirt = filhoDoFilho;
+
+            filhoDoFilho.anterior = no;
+            filhoDoFilho.proxDirt = proxDirt;
+
+            proxDirt.anterior = filhoDoFilho;
+            proxDirt.proxEsqd = null;
+        }else{
+            no.proxDirt = filhoDoFilho;
+            filhoDoFilho.anterior = no;
+            filhoDoFilho.proxDirt = proxDirt;
+            proxDirt.proxEsqd = noInserido;
+            noInserido.anterior = proxDirt;
+            proxDirt.anterior = filhoDoFilho;
+        }
         trocaSimpleDirt(no);
     }
 
@@ -190,16 +195,27 @@ public class Arvore{
         No filhoDoFilho = proxEsqd.proxDirt;
         No noInserido = filhoDoFilho.proxEsqd;
 
-        //Alinha nos
-        no.proxDirt = filhoDoFilho;
-        filhoDoFilho.anterior = no;
-        filhoDoFilho.proxDirt = proxEsqd;
-        proxEsqd.proxDirt = noInserido;
-        noInserido.anterior = proxEsqd;
-        proxEsqd.anterior = filhoDoFilho;
+        if(no.proxDirt == null){
+            no.proxEsqd = filhoDoFilho;
 
+            filhoDoFilho.anterior = no;
+            filhoDoFilho.proxEsqd = proxEsqd;
+
+            proxEsqd.anterior = filhoDoFilho;
+            proxEsqd.proxDirt = null;
+        }else{
+            no.proxDirt = filhoDoFilho;
+            filhoDoFilho.anterior = no;
+
+            filhoDoFilho.proxEsqd = proxEsqd;
+            proxEsqd.proxDirt = noInserido;
+
+            noInserido.anterior = proxEsqd;
+            proxEsqd.anterior = filhoDoFilho;
+        }
         trocaSimpleEsqd(no);
     }
+    
     public String exibirArvore(int nivel, No no){
         String str = toString(no) + "\n";
       
@@ -221,6 +237,7 @@ public class Arvore{
 
         return str;
     }
+    
     public String toString(No no){
         return "["+no.valor+"] ("+no.bal+")";
     }
