@@ -113,9 +113,9 @@ public class Endereco {
             pstmt.execute();
         } catch (Exception e) {
             throw e;
-//        } finally {
-//            if (pstmt != null) pstmt.close();
-//            if (con != null) con.close();
+        } finally {
+            if (pstmt != null) pstmt.close();
+            if (con != null) con.close();
         }
     }
 

@@ -79,7 +79,6 @@ public class Main {
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-                    System.out.println("teste");
 
                     break;
                 }
@@ -97,7 +96,7 @@ public class Main {
                     System.out.println("Digite uma opção válida!!!");
                 }
             }
-        } while (key != 3);
+        } while (key != 5);
     }
 }
 
