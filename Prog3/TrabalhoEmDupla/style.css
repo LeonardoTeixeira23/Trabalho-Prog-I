@@ -75,7 +75,7 @@ footer{
     background: #DBC3E6;
     padding: 1rem 0;
     bottom: 0;
-    min-width: 100vh;
+    min-width: 100%;
     display: inline;
     position: fixed;
 }
