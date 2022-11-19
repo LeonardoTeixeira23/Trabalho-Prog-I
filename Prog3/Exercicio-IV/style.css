@@ -1,0 +1,18 @@
+body{
+    display: flex;
+    min-height: 100vh;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteinerPrincipal{
+    border: orange solid 2px;
+    width: 80%;
+    padding: 2rem;
+    background: lightskyblue;
+}
+.conteinerPrincipal h1{
+    font-style: italic;
+    font-size: 16pt;
+}

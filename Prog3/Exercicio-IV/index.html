@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Forms</title>
+</head>
+<body>
+    <div class="conteinerPrincipal">
+        <h1>Cálculo do IMC</h1>
+        <form action="">
+            <label for="cpf">Informe o seu CPF:</label>
+            <input type="text" name="cpf" id="cpf">
+            <br><br>
+            <label for="nome">Informe seu nome: </label>
+            <input type="text" name="nome" id="nome">
+            <br><br>
+            <label for="dataNascimento">Informe sua data de nascimento: </label>
+            <input type="text" name="dataNascimento" id="dataNascimento">
+            <br><br>
+            <fieldset >
+                <legend>Sexo: </legend>
+                <input name="sexo" id="sexo1" type="radio" value="F" required><label for="sexo1">Feminino</label> <br>
+                <input name="sexo" id="sexo2" type="radio" value="M"><label for="sexo2">Masculino</label> <br>
+            </fieldset>
+            <br><br>
+            <label  for="peso">Informe o seu peso: </label>
+            <input type="number" name="peso" id="peso" required>
+            <br><br>
+            <label for="altura">Informe sua altura: </label>
+            <input type="number" name="altura" id="altura" required>
+            <input name="acao" value="Salvar" type="submit">
+        </form>
+    </div>
+</body>
+</html>

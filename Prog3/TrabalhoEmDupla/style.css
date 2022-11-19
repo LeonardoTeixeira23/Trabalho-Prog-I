@@ -7,7 +7,7 @@ Estilo Geral
 
     text-decoration: none;
     list-style-type: none;
-    font-family:Arial, Impact;
+    font-family: Arial, Impact, serif;
 }
 
 :root{
@@ -75,7 +75,7 @@ footer{
     background: #DBC3E6;
     padding: 1rem 0;
     bottom: 0;
-    min-width: 100%;
+    min-width: 100vw;
 
 
     display: inline;
@@ -125,6 +125,9 @@ footer{
     font-weight: bold;
 }
 
+/*
+HOME
+*/
 .conteinerPrincipal{
     width: 80%;
     margin: auto;
@@ -135,7 +138,7 @@ footer{
 }
 
 .conteinerPrincipal h1{
-    font-family: "Comic Sans MS";
+    font-family: "Comic Sans MS", serif;
     color: var(--cor-menu-hover);
 }
 
@@ -149,3 +152,31 @@ footer{
     padding: 0 1rem;
 }
 
+.textoPrincipal p{
+    font-family: Verdana, serif;
+    font-size: 12pt;
+    text-align: justify-all;
+}
+
+.textoPrincipal p:nth-child(2){
+    color: var(--cor-menu-hover);
+}
+
+/*
+Pesquisa
+*/
+table{
+ border: black 1px solid;
+}
+thead{
+    border-bottom: black 1px solid;
+    box-shadow: 0 0 50px gray;
+
+}
+tbody tr:nth-child(even) {
+    background-color: #CCC;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #FFF;
+}
