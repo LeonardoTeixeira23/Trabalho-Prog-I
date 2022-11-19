@@ -165,13 +165,52 @@ HOME
 /*
 Pesquisa
 */
+
+.botaoTabela, .botaoFiltrar{
+    padding: 3pt;
+    font-family: "Comic Sans MS", serif;
+    background: var(--cor-menu);
+    border: var(--cor-menu-hover) 1px solid;
+    border-radius: 5px;
+}
+
+.botaoTabela:hover, .botaoFiltrar:hover {
+    pointer-events: stroke;
+    color: var(--cor-menu-hover) ;
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.filtro{
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.filtro label{
+    font-weight: bold;
+}
+
+.barraPesquisa{
+    width: 50%;
+    margin: 0 0.5rem;
+}
+
+.containerTabela{
+    padding: 1rem 0;
+    width: 100%;
+}
+
 table{
- border: black 1px solid;
+    border: black 1px solid;
+    width: 100%;
+    margin: 0.5rem 0;
 }
 thead{
     border-bottom: black 1px solid;
-    box-shadow: 0 0 50px gray;
-
+    box-shadow: 0 2px 2px gray;
+    font-family: Arial;
 }
 tbody tr:nth-child(even) {
     background-color: #CCC;
