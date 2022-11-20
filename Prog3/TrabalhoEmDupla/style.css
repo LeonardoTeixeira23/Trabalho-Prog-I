@@ -137,7 +137,7 @@ HOME
     padding: 1rem;
 }
 
-.conteinerPrincipal h1{
+.titulo{
     font-family: "Comic Sans MS", serif;
     color: var(--cor-menu-hover);
 }
