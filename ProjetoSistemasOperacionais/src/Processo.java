@@ -16,6 +16,7 @@ public class Processo implements Cloneable {
         this.id = id;
         this.ut = ut;
         this.tempoDeChegada = chegada;
+        this.prioridade = prioridade;
         this.tempoRestante = ut;
     }
 
