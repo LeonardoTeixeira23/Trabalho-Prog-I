@@ -1,10 +1,15 @@
 public class Arvore{
     No raiz;
     
+   
     public Arvore(){
         raiz = null;
     }
-    
+   
+    /*
+     *Função de inserção cria um no e atribui um valor a ele,logo apos verifica se 
+     *ja existe uma raiz, caso não exista invoca a função "testarLados" para verificar onde o novo nó deve ser inserido
+     */
     public void inserir(int valor){
         No no = new No();
         no.valor = valor;
@@ -16,6 +21,11 @@ public class Arvore{
         }
     }
     
+    
+    /*
+     * Realiza testes para verificar em qual lado os nos devem ser inseridos 
+     * 
+     * */
     public void testeLados(No no, No noAux){
         if(noAux.valor > no.valor){
             if(noAux.proxEsqd == null){

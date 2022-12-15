@@ -5,8 +5,9 @@ public class Main{
 		Arvore ar = new Arvore();
 		Scanner kboard = new Scanner(System.in);
 		int key;
+		boolean fimLoop = false;
 
-		while(true){
+		while(!fimLoop){
 			System.out.print("\n[1] Inserir valor"   + 
 							 "\n[2] Buscar valor"    +
 							 "\n[3] Remover valor"   +
@@ -44,7 +45,7 @@ public class Main{
 					break;
 				
 				case 0:
-					
+					fimLoop = true;
 					break;
 			}
 		}
