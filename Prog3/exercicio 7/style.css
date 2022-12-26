@@ -1,0 +1,31 @@
+body{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+body h1{
+    text-align: center;
+}
+
+.displayFlex{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.displayFlex label{
+    padding: 10px;
+}
+
+.containerBtn{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn{
+    padding: 5pt;
+    margin: 5pt 8pt;
+}

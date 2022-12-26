@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fatura de serviço de telecomunicação</h1>
+    <form action="get">
+        <fieldset class="displayFlex">
+            <legend>Dados do cliente</legend>
+
+            <label for="cpf">CPF: </label>
+            <input type="text" name="cpf" id="cpf">
+
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome">
+
+            <label for="tel">Telefone: </label>
+            <input type="tel" name="tel" id="tel">
+
+            <label for="end">Endereço: </label>
+            <input type="text" name="end" id="end">
+        </fieldset>
+
+        <fieldset class="displayFlex">
+            <legend>Dados do serviço</legend>
+
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" id="descricao">
+
+            <label for="dataRea">Data de realização</label>
+            <input type="date" name="dataRea" id="dataRea">
+
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo">
+                <option value="1">Instalação de Telefone/Internet</option>
+                <option value="2">Manutenção de Linha Telefônica/Internet</option>
+                <option value="3">Troca de Equipamentos (modem)</option>
+                <option value="4">Suporte Técnico</option>
+            </select>
+
+            <label for="tempo">Tempo para realização do serviço</label>
+            <input type="text" name="tempo"id="tempo">
+
+            <label for="valor">Valor</label>
+            <input type="text" name="valor" id="valor">
+
+        </fieldset>
+
+        <fieldset class="displayFlex">
+            <legend>Data da fatura</legend>
+
+            <label for="dataEm">Data de emissão</label>
+            <input type="date" name="dataEm" id="dataEm">
+
+            <label for="dataVen">Data de Vencimento</label>
+            <input type="date"name="dataVen" id="dataVen">
+        </fieldset>
+        <div class="containerBtn">
+            <input class="btn" type="submit" value="Imprimir fatura">
+            <input class="btn" type="button" value="Limpar">
+        </div>
+    </form>
+</body>
+</html>
