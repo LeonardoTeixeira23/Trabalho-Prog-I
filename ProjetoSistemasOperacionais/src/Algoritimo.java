@@ -149,9 +149,20 @@ public class Algoritimo{
         exibirResultos();
     }
 
-    public void robin(){
-        while (){
+    public void robin() throws CloneNotSupportedException {
+        copiarFila();
+        this.index = 1;
+        Processo ex;
 
+        while (true){
+            if(verificaFilaVazia()){
+                break;
+            }else{
+                for(Processo p: filaAux){
+
+                }
+
+            }
         }
     }
 
