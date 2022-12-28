@@ -7,7 +7,7 @@ public class Algoritimo{
 
     Scanner kboard = new Scanner(System.in);
     Processo[] fila, filaAux;
-    int tempoTotal = 0, index;
+    int index;
     float tempoMedio;
 
 /***********************************************************************************************************************
@@ -24,7 +24,6 @@ public class Algoritimo{
             String id = "p"+i;
             fila[i] = new Processo(id, chegada);
 
-            this.tempoTotal += fila[i].ut;
             chegada += fila[i].r.nextInt(20);
         }
     }
@@ -46,7 +45,6 @@ public class Algoritimo{
 
 
             fila[i] = new Processo(id, ut, chegada, prioridade);
-            this.tempoTotal += ut;
         }
     }
 
@@ -152,18 +150,22 @@ public class Algoritimo{
     public void robin() throws CloneNotSupportedException {
         copiarFila();
         this.index = 1;
-        Processo ex;
+        int passo =0;
+        int ciclo = 8;
+
+        ajustaEspera();
 
         while (true){
             if(verificaFilaVazia()){
                 break;
             }else{
-                for(Processo p: filaAux){
-
-                }
-
+                printRobin(ciclo,passo);
             }
+            passo++;
+            if (passo >= filaAux.length) passo = 0;
         }
+        calcularTempoMedio();
+        exibirResultos();
     }
 
 /***********************************************************************************************************************
@@ -181,7 +183,7 @@ public class Algoritimo{
             );
         }
         System.out.printf("\nTempo médio de espera: %.2f%n", this.tempoMedio);
-        System.out.println("Tempo total de execução: " + this.tempoTotal);
+        System.out.println("Tempo total de execução: " + (this.index - 1));
     }
 
     public void calcularTempoMedio(){
@@ -194,8 +196,15 @@ public class Algoritimo{
     }
 
     public void encrementaEspera(Processo p){
-        for(Processo pf : filaAux){
-            if(!pf.id.equals(p.id) && pf.tempoRestante > 0) pf.tempoEsp += 1;
+
+        if(p==null){
+            for (Processo pf : filaAux) {
+                pf.tempoEsp += 1;
+            }
+        }else {
+            for (Processo pf : filaAux) {
+                if (!pf.id.equals(p.id) && pf.tempoRestante > 0) pf.tempoEsp += 1;
+            }
         }
     }
 
@@ -268,5 +277,26 @@ public class Algoritimo{
             }
         }
         return p;
+    }
+
+    public Processo primeiroValido(int passo) {
+        for(;passo < filaAux.length; passo++){
+            Processo p = filaAux[passo];
+            if((p.tempoRestante > 0) && (p.tempoDeChegada <= this.index)) return p;
+        }
+        return null;
+    }
+
+    public void printRobin(int ciclo, int passo){
+        Processo p = primeiroValido(passo);
+        if(p == null){
+            printSemProcPronto(p);
+        }else{
+            for(int i = 0; i < ciclo; i++){
+                if(p.tempoRestante>0){
+                    printPreem(p);
+                }else break;
+            }
+        }
     }
 }
