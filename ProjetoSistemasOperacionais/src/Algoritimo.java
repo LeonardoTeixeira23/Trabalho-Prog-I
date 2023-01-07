@@ -7,7 +7,7 @@ public class Algoritimo{
 
     Scanner kboard = new Scanner(System.in);
     Processo[] fila, filaAux;
-    int index;
+    int index, passo;
     float tempoMedio;
 
 /***********************************************************************************************************************
@@ -33,16 +33,15 @@ public class Algoritimo{
         for(int i = 0; i < fila.length; i++){
             String id = "p"+i;
 
-            System.out.print("\nInforme o peso do Processo (Ciclos necessarios para executalo): ");
+            System.out.print("PROCESSO: " + i);
+            System.out.print("Informe o peso do Processo (Ciclos necessarios para executalo): ");
             int ut = kboard.nextInt();
 
-
-            System.out.print("\nInforme a prioridade do Processo: ");
+            System.out.print("Informe a prioridade do Processo: ");
             int prioridade = kboard.nextInt();
 
-            System.out.print("\nInforme o instante de chegada do Processo: ");
+            System.out.print("Informe o instante de chegada do Processo: ");
             int chegada = kboard.nextInt();
-
 
             fila[i] = new Processo(id, ut, chegada, prioridade);
         }
@@ -64,24 +63,32 @@ public class Algoritimo{
     }
 
     public void sjf() throws CloneNotSupportedException {
-        copiarFila();
         Processo processoSjf;
         this.index = 1;
 
+        copiarFila();
         ajustaEspera();
 
         while (true){
             processoSjf = varreProcessos(this.filaAux[0]);
 
-            if(processoSjf.tempoRestante <= 0){
-                if(verificaFilaVazia()){
-                    break;
-                }else{
-                    printSemProcPronto(processoSjf);
-                }
-            }else {
-                printNaoPreem(processoSjf);
+            if(verificaFilaVazia()){
+                break;
             }
+
+            try {
+                printNaoPreem(processoSjf);
+            }catch (Exception e) {printSemProcPronto(processoSjf);}
+
+//            if(processoSjf.tempoRestante <= 0){
+//                if(verificaFilaVazia()){
+//                    break;
+//                }else{
+//                    printSemProcPronto(processoSjf);
+//                }
+//            }else {
+//                printNaoPreem(processoSjf);
+//            }
         }
         calcularTempoMedio();
         exibirResultos();
@@ -89,23 +96,60 @@ public class Algoritimo{
 
     public void sjfPreem() throws CloneNotSupportedException {
         copiarFila();
-        Processo processSjfPrem;
+        Processo p;
         this.index = 1;
 
         ajustaEspera();
 
         while (true){
-            processSjfPrem = varreProcessos(this.filaAux[0]);
+            p = varreProcessos(this.filaAux[0]);
 
-            if(processSjfPrem.tempoRestante == 0){
-                if(verificaFilaVazia()){
-                    break;
-                }else{
-                    printSemProcPronto(processSjfPrem);
-                }
-            }else{
-                printPreem(processSjfPrem);
+            if(verificaFilaVazia()){
+                break;
             }
+
+            try {
+                printPreem(p);
+            }catch (Exception e) {printSemProcPronto(p);}
+
+//            if(processSjfPrem.tempoRestante == 0){
+//                if(verificaFilaVazia()){
+//                    break;
+//                }else{
+//                    printSemProcPronto(processSjfPrem);
+//                }
+//            }else{
+//                printPreem(processSjfPrem);
+//            }
+        }
+        calcularTempoMedio();
+        exibirResultos();
+    }
+
+    public void prioridade() throws CloneNotSupportedException {
+        this.index = 1;
+        Processo pEx;
+
+        copiarFila();
+        ajustaEspera();
+
+        while(true){
+            pEx = maiorPrioridade(this.filaAux[0]);
+
+            if(verificaFilaVazia()){
+                break;
+            }
+
+            try {
+                printNaoPreem(pEx);
+            }catch (Exception e) {printSemProcPronto(pEx);}
+
+
+//            if(verificaFilaVazia()){
+//                break;
+//            }else{
+//                printNaoPreem(pEx);
+//            }
         }
         calcularTempoMedio();
         exibirResultos();
@@ -119,50 +163,45 @@ public class Algoritimo{
         while(true){
             pEx = maiorPrioridade(this.filaAux[0]);
 
+
             if(verificaFilaVazia()){
                 break;
-            }else{
+            }
+
+            try {
                 printPreem(pEx);
-            }
-        }
-        calcularTempoMedio();
-        exibirResultos();
-    }
+            }catch (Exception e) {printSemProcPronto(pEx);}
 
-    public void prioridade() throws CloneNotSupportedException {
-        copiarFila();
-        this.index = 1;
-        Processo pEx;
-
-        while(true){
-            pEx = maiorPrioridade(this.filaAux[0]);
-
-            if(verificaFilaVazia()){
-                break;
-            }else{
-                printNaoPreem(pEx);
-            }
+//            if(verificaFilaVazia()){
+//                break;
+//            }else{
+//                printPreem(pEx);
+//            }
         }
         calcularTempoMedio();
         exibirResultos();
     }
 
     public void robin() throws CloneNotSupportedException {
-        copiarFila();
         this.index = 1;
-        int passo =0;
         int ciclo = 8;
+        this.passo = 0;
 
-        ajustaEspera();
+        copiarFila();
 
         while (true){
-            if(verificaFilaVazia()){
+
+            try{
+                printRobin(ciclo);
+            }catch(Exception e){
                 break;
-            }else{
-                printRobin(ciclo,passo);
             }
-            passo++;
-            if (passo >= filaAux.length) passo = 0;
+//            if(verificaFilaVazia()){
+//                break;
+//            }else{
+//                printRobin(ciclo);
+//            }
+            if (this.passo >= filaAux.length) passo = 0;
         }
         calcularTempoMedio();
         exibirResultos();
@@ -184,6 +223,37 @@ public class Algoritimo{
         }
         System.out.printf("\nTempo médio de espera: %.2f%n", this.tempoMedio);
         System.out.println("Tempo total de execução: " + (this.index - 1));
+    }
+
+    public void printPreem(Processo p){
+        System.out.println(this.index + " : " + p.id);
+        this.index++;
+        p.tempoRestante--;
+        encrementaEspera(p);
+    }
+
+    public void printNaoPreem(Processo p){
+        while(p.tempoRestante > 0){
+            System.out.println(this.index + " : " + p.id);
+            this.index++;
+            p.tempoRestante--;
+            encrementaEspera(p);
+        }
+    }
+
+    public void printSemProcPronto(Processo p){
+        System.out.println(this.index + " : não a processo pronto");
+        this.index++;
+        encrementaEspera(p);
+    }
+    public void printRobin(int ciclo){
+        Processo p = primeiroValido();
+
+        for(int i = 0; i < ciclo; i++){
+            if(p.tempoRestante>0){
+                printPreem(p);
+            }else break;
+        }
     }
 
     public void calcularTempoMedio(){
@@ -221,24 +291,48 @@ public class Algoritimo{
         }
     }
 
-    public Processo validaProcessos(Processo p, Processo p1){
-        Processo retorno;
-
-        if((p.tempoRestante > 0) && (p.tempoDeChegada <= this.index)){
-            if (p.tempoRestante < p1.tempoRestante || p1.tempoRestante == 0){
-                retorno = p;
-            }else retorno = p1;
-        }else retorno = p1;
-        return retorno;
+    public boolean processoPronto(Processo p){
+        if ((p.tempoRestante > 0) && (p.tempoDeChegada <= this.index)) return true;
+        else return false;
     }
 
-    public Processo varreProcessos(Processo proc){
-        for (Processo p: this.filaAux) {
+    public Processo maiorPrioridade(Processo p){
+        for(Processo pAux : this.filaAux){
+            if(processoPronto(pAux)) {
+                if ((p.tempoRestante == 0) ||
+                        (pAux.prioridade > p.prioridade) ||
+                        (p.tempoDeChegada > this.index)) {
+                    p = pAux;
+                }
+            }
+        }
+        if (processoPronto(p)) return p;
+        else return null;
+    }
+    public Processo primeiroValido() {
+        for(;this.passo < filaAux.length; this.passo++){
+            Processo p = filaAux[this.passo];
+            if(p.tempoRestante > 0){passo++; return p;}
+        }
+        return null;
+    }
+
+    public Processo validaProcessos(Processo p, Processo p1){
+        if(processoPronto(p)){
+            if ((p.tempoRestante < p1.tempoRestante) ||
+                    (p1.tempoRestante == 0) ||
+                    (p1.tempoDeChegada > this.index)){
+                return p;
+            }else return p1;
+        }else return p1;
+    }
+    public Processo varreProcessos(Processo proc) {
+        for (Processo p : this.filaAux) {
             proc = validaProcessos(p, proc);
         }
-        return proc;
+        if (processoPronto(proc)) return proc;
+        else return null;
     }
-
     public boolean verificaFilaVazia(){
         for(Processo p : filaAux){
             if(p.tempoRestante > 0){
@@ -248,55 +342,4 @@ public class Algoritimo{
         return true;
     }
 
-    public void printPreem(Processo p){
-        System.out.println(this.index + " : " + p.id);
-        this.index++;
-        p.tempoRestante--;
-        encrementaEspera(p);
-    }
-
-    public void printNaoPreem(Processo p){
-        while(p.tempoRestante > 0){
-            System.out.println(this.index + " : " + p.id);
-            this.index++;
-            p.tempoRestante--;
-            encrementaEspera(p);
-        }
-    }
-
-    public void printSemProcPronto(Processo p){
-        System.out.println(this.index + " : não a processo pronto");
-        this.index++;
-        encrementaEspera(p);
-    }
-
-    public Processo maiorPrioridade(Processo p){
-        for(Processo pAux : this.filaAux){
-            if((p.tempoRestante == 0) || (pAux.prioridade > p.prioridade && pAux.tempoRestante > 0)){
-                p = pAux;
-            }
-        }
-        return p;
-    }
-
-    public Processo primeiroValido(int passo) {
-        for(;passo < filaAux.length; passo++){
-            Processo p = filaAux[passo];
-            if((p.tempoRestante > 0) && (p.tempoDeChegada <= this.index)) return p;
-        }
-        return null;
-    }
-
-    public void printRobin(int ciclo, int passo){
-        Processo p = primeiroValido(passo);
-        if(p == null){
-            printSemProcPronto(p);
-        }else{
-            for(int i = 0; i < ciclo; i++){
-                if(p.tempoRestante>0){
-                    printPreem(p);
-                }else break;
-            }
-        }
-    }
 }

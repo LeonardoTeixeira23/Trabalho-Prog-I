@@ -5,9 +5,8 @@ public class Main {
     static Scanner kboard = new Scanner(System.in);
 
     public static void main(String[] args) throws CloneNotSupportedException {
-
+        boolean loop = true;
         iniciarFila();
-        povoarFila();
 
         do{
             textoPrincipal();
@@ -19,9 +18,11 @@ public class Main {
                 case 4-> fila.robin();
                 case 5-> fila.prioridade();
                 case 6-> fila.prioridadePreem();
+                case 7-> loop=false;
+                case 8-> iniciarFila();
             }
 
-        }while(true);
+        }while(loop);
 
 
     }
@@ -34,12 +35,14 @@ public class Main {
                 "[5] - PRIORIDADE\n" +
                 "[6] - PRIORIDADE P\n" +
                 "[7] - SAIR\n" +
+                "[8] - CRIAR NOVO CONJUNTO" +
                 "ESCOLHA O TIPO DE ALGORITMO: ");
     }
 
     public static void iniciarFila(){
         System.out.print("\nDigite o Número de processos : ");
         fila = new Algoritimo(kboard.nextInt());
+        povoarFila();
     }
 
     public static void povoarFila(){
