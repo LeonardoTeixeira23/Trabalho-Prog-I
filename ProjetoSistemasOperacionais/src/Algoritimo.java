@@ -24,7 +24,7 @@ public class Algoritimo{
             String id = "p"+i;
             fila[i] = new Processo(id, chegada);
 
-            chegada += fila[i].r.nextInt(20);
+            chegada += fila[i].r.nextInt(12);
         }
     }
 
@@ -186,11 +186,8 @@ public class Algoritimo{
 
     public void robin() throws CloneNotSupportedException {
         this.index = 1;
-        int ciclo;
+        int ciclo = 8;
         this.passo = 0;
-
-        System.out.print("Informe o numero de ciclos que o processo ficara no processador: ");
-        ciclo = kboard.nextInt();
 
         copiarFila();
 

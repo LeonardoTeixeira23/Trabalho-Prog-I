@@ -29,7 +29,7 @@ public class Processo implements Cloneable {
     }
 
     public void gerarUt() {
-        this.ut = r.nextInt(54);
+        this.ut = r.nextInt(10);
     }
 
     @Override
