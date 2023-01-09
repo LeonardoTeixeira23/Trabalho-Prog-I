@@ -32,9 +32,9 @@ public class Algoritimo{
 
         for(int i = 0; i < fila.length; i++){
             String id = "p"+i;
-
+            System.out.println("\n==================================================================");
             System.out.print("PROCESSO: " + i);
-            System.out.print("Informe o peso do Processo (Ciclos necessarios para executalo): ");
+            System.out.print("\nInforme o peso do Processo (Ciclos necessarios para executalo): ");
             int ut = kboard.nextInt();
 
             System.out.print("Informe a prioridade do Processo: ");
@@ -42,6 +42,8 @@ public class Algoritimo{
 
             System.out.print("Informe o instante de chegada do Processo: ");
             int chegada = kboard.nextInt();
+            System.out.println("==================================================================\n");
+
 
             fila[i] = new Processo(id, ut, chegada, prioridade);
         }
@@ -184,8 +186,11 @@ public class Algoritimo{
 
     public void robin() throws CloneNotSupportedException {
         this.index = 1;
-        int ciclo = 8;
+        int ciclo;
         this.passo = 0;
+
+        System.out.print("Informe o numero de ciclos que o processo ficara no processador: ");
+        ciclo = kboard.nextInt();
 
         copiarFila();
 
