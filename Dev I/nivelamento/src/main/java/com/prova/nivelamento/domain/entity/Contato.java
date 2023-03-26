@@ -1,5 +1,7 @@
 package com.prova.nivelamento.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,6 +18,7 @@ public class Contato{
     @Column(name = "email", length = 100)
     private String email;
     @OneToMany(mappedBy = "contato_id")
+    @JsonIgnoreProperties({"contato_id", "id"})
     private Set<Telefone> telefones;
 
     public Contato() {

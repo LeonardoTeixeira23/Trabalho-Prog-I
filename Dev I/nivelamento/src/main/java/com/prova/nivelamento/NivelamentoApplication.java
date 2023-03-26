@@ -6,6 +6,7 @@ import com.prova.nivelamento.domain.repository.ContatosDao;
 import com.prova.nivelamento.domain.repository.TelefonesDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NivelamentoApplication {
 
 	@Bean
-	public CommandLineRunner init(@Autowired ContatosDao contatosDao, @Autowired TelefonesDao telefones){
+	public CommandLineRunner init(@Autowired ContatosDao contatosDao, @Autowired TelefonesDao telefones) {
 		return ars -> {
 			Contato contato = new Contato("paula", "paula@hotmail.com");
 			Telefone telefone = new Telefone(contato, "54 343242");
@@ -23,8 +24,10 @@ public class NivelamentoApplication {
 			telefones.save(telefone);
 		};
 	}
-
-
+	public static void main(String[] args) {
+		SpringApplication.run(NivelamentoApplication.class, args);
+	}
+}
 
 
 
@@ -39,7 +42,7 @@ public class NivelamentoApplication {
 //		SpringApplication.run(NivelamentoApplication.class, args);
 //	}
 
-}
+
 //contatosDao.findAll().forEach(System.out::println);
 //			System.out.println(contatosDao.findById(20));
 
