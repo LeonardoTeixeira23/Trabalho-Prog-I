@@ -1,18 +1,27 @@
 package service;
 
-import aplicacao.Cliente;
+import entidades.Cliente;
+
 public class AtivacaoCliente {
-    Cliente cliente;
+    private boolean teste;
+
+    public boolean isTeste() {
+        return teste;
+    }
+
+    public void setTeste(boolean teste) {
+        this.teste = teste;
+    }
+
+    private Cliente cliente;
     public AtivacaoCliente(Cliente cliente){
         this.cliente = cliente;
     }
 
-    public void clienteAtivo(){
-        if(this.cliente.isAtivo()){
-            System.out.println("Seu cliente esta ativo");
-        }else {
-            System.out.println("Este cliente não esta ativo");
-        }
+
+    public void ativaCliente(){
+        cliente.setAtivo(true);
+        System.out.println("O cliente esta ativo");
     }
 
 }
